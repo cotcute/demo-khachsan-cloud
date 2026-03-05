@@ -29,7 +29,7 @@ pool
   .then(() => console.log("Đã khởi tạo bảng CSDL thành công!"))
   .catch((err) => console.error("Lỗi tạo bảng:", err));
 
-// API Xử lý khi khách bấm nút Đặt Phòng
+// API 1: Xử lý khi khách bấm nút Đặt Phòng (Thêm dữ liệu vào DB)
 app.post("/api/dat-phong", async (req, res) => {
   try {
     const tenPhong = req.body.tenPhong;
@@ -45,6 +45,20 @@ app.post("/api/dat-phong", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, error: "Lỗi Database" });
+  }
+});
+
+// API 2: Xem toàn bộ dữ liệu trong CSDL (Dành cho báo cáo)
+app.get("/api/xem-du-lieu", async (req, res) => {
+  try {
+    // Lấy tất cả dữ liệu, sắp xếp theo thời gian mới nhất lên đầu
+    const result = await pool.query(
+      "SELECT * FROM danh_sach_dat_phong ORDER BY thoi_gian DESC",
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Lỗi khi lấy dữ liệu" });
   }
 });
 
