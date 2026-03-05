@@ -3,40 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Khách sạn A+ | Mây Ngàn</title>
+    <title>Khách sạn A+ | Đẳng cấp mây ngàn</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <h1>Khách Sạn A+ Đà Nẵng</h1>
-      <p>Đồ án Điện toán đám mây - Nhóm 5</p>
+    <header class="hero">
+      <div class="hero-content">
+        <h1>Khách Sạn A+ Đà Nẵng</h1>
+        <p>Đồ án Điện toán đám mây - Tự động hóa CI/CD với Render</p>
+        <a href="#rooms" class="btn-primary">Xem phòng ngay</a>
+      </div>
     </header>
 
-    <main>
+    <main id="rooms">
       <section class="intro">
-        <h2>Chào mừng thầy và các bạn!</h2>
-        <p>
-          Trang web này được tự động triển khai (CI/CD) từ GitHub lên nền tảng
-          Render.
-        </p>
+        <h2>Hệ thống Đặt phòng Thông minh</h2>
+        <p>Giao diện hiện đại, cập nhật thời gian thực từ GitHub.</p>
       </section>
 
-      <section class="rooms">
+      <section class="rooms-container">
         <div class="room-card">
-          <h3>Phòng Đơn (Standard)</h3>
-          <p>Giá: 500.000 VNĐ/đêm</p>
-          <button>Đặt ngay</button>
+          <div class="room-img standard-img"></div>
+          <div class="room-info">
+            <h3>Phòng Tiêu Chuẩn (Standard)</h3>
+            <p class="price">500.000 VNĐ<span>/đêm</span></p>
+            <p class="desc">Phù hợp cho khách lẻ, đầy đủ tiện nghi cơ bản.</p>
+            <button class="book-btn" onclick="datPhong('Phòng Tiêu Chuẩn')">
+              Đặt phòng
+            </button>
+          </div>
         </div>
+
         <div class="room-card">
-          <h3>Phòng Đôi (VIP)</h3>
-          <p>Giá: 1.200.000 VNĐ/đêm</p>
-          <button>Đặt ngay</button>
+          <div class="room-img vip-img"></div>
+          <div class="room-info">
+            <h3>Phòng Tổng Thống (VIP)</h3>
+            <p class="price">2.500.000 VNĐ<span>/đêm</span></p>
+            <p class="desc">View biển Đà Nẵng, có hồ bơi riêng và bữa sáng.</p>
+            <button class="book-btn" onclick="datPhong('Phòng VIP')">
+              Đặt phòng
+            </button>
+          </div>
         </div>
       </section>
     </main>
 
     <footer>
-      <p>© 2026 Bản quyền thuộc về Nhóm A+ thì dẫn thầy đi nhậu.</p>
+      <p>© 2026 Bản quyền thuộc về Nhóm: A+ thì dẫn thầy đi nhậu.</p>
     </footer>
+
+    <script>
+      function datPhong(tenPhong) {
+        alert(
+          "✅ Xác nhận: Bạn đang yêu cầu đặt " +
+            tenPhong +
+            "!\n\nHệ thống đang xử lý trên Đám mây Render...",
+        );
+      }
+    </script>
   </body>
 </html>
