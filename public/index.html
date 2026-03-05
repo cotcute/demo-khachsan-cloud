@@ -53,12 +53,25 @@
     </footer>
 
     <script>
-      function datPhong(tenPhong) {
-        alert(
-          "✅ Xác nhận: Bạn đang yêu cầu đặt " +
-            tenPhong +
-            "!\n\nHệ thống đang xử lý trên Đám mây Render...",
-        );
+      async function datPhong(tenPhong) {
+        alert("Đang gửi yêu cầu đặt " + tenPhong + " lên Đám mây...");
+
+        try {
+          const response = await fetch("/api/dat-phong", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ tenPhong: tenPhong }),
+          });
+          const data = await response.json();
+
+          if (data.success) {
+            alert("✅ THÀNH CÔNG!\n" + data.message);
+          } else {
+            alert("❌ Lỗi: Không thể lưu vào CSDL");
+          }
+        } catch (error) {
+          alert("❌ Lỗi kết nối đến máy chủ Đám mây!");
+        }
       }
     </script>
   </body>
